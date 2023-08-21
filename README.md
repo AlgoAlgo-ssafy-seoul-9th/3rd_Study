@@ -121,7 +121,33 @@ def solution(gems):
 ## [성구](./예산/성구.py)
 
 ```py
+# 2512 예산
+import sys
 
+input = sys.stdin.readline
+
+# input
+N = int(input())
+request = list(map(int, input().split()))
+total = int(input())
+
+# define
+maxBudget = max(request)
+
+if sum(request) <= total:
+    print(maxBudget)
+else:
+    for i in range(total//N, maxBudget):
+        tmp = [0] * N
+        for j in range(N):
+            if i < request[j]:
+                tmp[j] = i
+            else:
+                tmp[j] = request[j]
+
+        if sum(tmp) <= total:
+            print(i)
+            break
 ```
 
 ## [민웅](./예산/민웅.py)
@@ -216,7 +242,34 @@ print(binary(arr))
 ## [성구](./볼%20모으기/성구.py)
 
 ```py
+# 17615 볼 모으기
+import sys
+input = sys.stdin.readline
 
+# input
+N = int(input())
+arr = input().strip()
+
+# define
+cnt = [0] * 4
+
+# right Red
+rr = arr.rstrip("R")
+cnt[0] = rr.count("R")
+
+# left Red
+lr = arr.lstrip("R")
+cnt[1] = lr.count("R")
+
+# right Blue
+rb = arr.rstrip("B")
+cnt[2] = rb.count("B")
+
+# left Blue
+lb = arr.lstrip("B")
+cnt[3] = lb.count("B")
+
+print(min(cnt))
 ```
 
 ## [민웅](./볼%20모으기/민웅.py)
@@ -347,7 +400,27 @@ print(min(answer))
 ## [성구](./하늘에서%20별똥별이%20빗발친다/성구.py)
 
 ```py
+# 14658 하늘에서 별똥별이 빗발친다
+import sys
 
+input = sys.stdin.readline
+
+# input
+N, M, L, K = map(int, input().split())
+star = [list(map(int, input().split())) for _ in range(K)]
+maxV = -1
+# 두개의 점을 비교
+for x1, y1 in star:
+    for x2, y2 in star:
+        # 두 점에 대한 사각형 안에 별 개수
+        stars = 0
+        for x3, y3 in star:
+            # 첫번째 별의 x와 두번째 별의 y을 기준으로 +L까지 범위에 포함되는 지 판단
+            if x1 <= x3 <= x1 + L and y2 <= y3 <= y2 + L:
+                stars += 1
+        maxV = max(maxV, stars)
+# 튕겨지는 별을 제외한 지구에 떨어지는 별
+print(K - maxV)
 ```
 
 ## [민웅](./하늘에서%20별똥별이%20빗발친다/민웅.py)
