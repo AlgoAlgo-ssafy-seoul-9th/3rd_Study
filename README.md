@@ -1,6 +1,6 @@
-# 2nd_study
+# 3rd_study
 
-[2주차] 코딩테스트 준비 2주차
+[3주차] 코딩테스트 준비 3주차
 <br/>
 
 [프로그래머스 보석 쇼핑](https://school.programmers.co.kr/learn/courses/30/lessons/67258)
